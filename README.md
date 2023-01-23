@@ -1,5 +1,5 @@
-[![Release](https://img.shields.io/github/release/github.com/samyfodil/web3auth.svg)](https://github.com/samyfodil/web3auth/releases)
-[![License](https://img.shields.io/github/license/github.com/samyfodil/web3auth)](LICENSE)
+[![Release](https://img.shields.io/github/release/github/samyfodil/web3auth.svg)](https://github.com/samyfodil/web3auth/releases)
+[![License](https://img.shields.io/github/license/samyfodil/web3auth)](LICENSE)
 [![Go Report Card](https://goreportcard.com/badge/github.com/samyfodil/web3auth)](https://goreportcard.com/report/github.com/samyfodil/web3auth)
 [![GoDoc](https://godoc.org/github.com/github.com/samyfodil/web3auth?status.svg)](https://pkg.go.dev/github.com/github.com/samyfodil/web3auth)
 
