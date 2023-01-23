@@ -17,7 +17,7 @@ var (
 	_ easyjson.Marshaler
 )
 
-func easyjsonFebee679DecodeGithubComSamyfodilWeb3authJson(in *jlexer.Lexer, out *InitReply) {
+func easyjsonFebee679DecodeGithubComSamyfodilWeb3authProto(in *jlexer.Lexer, out *InitReply) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -40,6 +40,8 @@ func easyjsonFebee679DecodeGithubComSamyfodilWeb3authJson(in *jlexer.Lexer, out 
 			out.Challenge = string(in.String())
 		case "signature":
 			out.Signature = string(in.String())
+		case "error":
+			out.Error = string(in.String())
 		default:
 			in.SkipRecursive()
 		}
@@ -50,7 +52,7 @@ func easyjsonFebee679DecodeGithubComSamyfodilWeb3authJson(in *jlexer.Lexer, out 
 		in.Consumed()
 	}
 }
-func easyjsonFebee679EncodeGithubComSamyfodilWeb3authJson(out *jwriter.Writer, in InitReply) {
+func easyjsonFebee679EncodeGithubComSamyfodilWeb3authProto(out *jwriter.Writer, in InitReply) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -70,33 +72,43 @@ func easyjsonFebee679EncodeGithubComSamyfodilWeb3authJson(out *jwriter.Writer, i
 		}
 		out.String(string(in.Signature))
 	}
+	if in.Error != "" {
+		const prefix string = ",\"error\":"
+		if first {
+			first = false
+			out.RawString(prefix[1:])
+		} else {
+			out.RawString(prefix)
+		}
+		out.String(string(in.Error))
+	}
 	out.RawByte('}')
 }
 
 // MarshalJSON supports json.Marshaler interface
 func (v InitReply) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjsonFebee679EncodeGithubComSamyfodilWeb3authJson(&w, v)
+	easyjsonFebee679EncodeGithubComSamyfodilWeb3authProto(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v InitReply) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjsonFebee679EncodeGithubComSamyfodilWeb3authJson(w, v)
+	easyjsonFebee679EncodeGithubComSamyfodilWeb3authProto(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *InitReply) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjsonFebee679DecodeGithubComSamyfodilWeb3authJson(&r, v)
+	easyjsonFebee679DecodeGithubComSamyfodilWeb3authProto(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *InitReply) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjsonFebee679DecodeGithubComSamyfodilWeb3authJson(l, v)
+	easyjsonFebee679DecodeGithubComSamyfodilWeb3authProto(l, v)
 }
-func easyjsonFebee679DecodeGithubComSamyfodilWeb3authJson1(in *jlexer.Lexer, out *InitMessage) {
+func easyjsonFebee679DecodeGithubComSamyfodilWeb3authProto1(in *jlexer.Lexer, out *InitMessage) {
 	isTopLevel := in.IsStart()
 	if in.IsNull() {
 		if isTopLevel {
@@ -127,7 +139,7 @@ func easyjsonFebee679DecodeGithubComSamyfodilWeb3authJson1(in *jlexer.Lexer, out
 		in.Consumed()
 	}
 }
-func easyjsonFebee679EncodeGithubComSamyfodilWeb3authJson1(out *jwriter.Writer, in InitMessage) {
+func easyjsonFebee679EncodeGithubComSamyfodilWeb3authProto1(out *jwriter.Writer, in InitMessage) {
 	out.RawByte('{')
 	first := true
 	_ = first
@@ -143,23 +155,23 @@ func easyjsonFebee679EncodeGithubComSamyfodilWeb3authJson1(out *jwriter.Writer, 
 // MarshalJSON supports json.Marshaler interface
 func (v InitMessage) MarshalJSON() ([]byte, error) {
 	w := jwriter.Writer{}
-	easyjsonFebee679EncodeGithubComSamyfodilWeb3authJson1(&w, v)
+	easyjsonFebee679EncodeGithubComSamyfodilWeb3authProto1(&w, v)
 	return w.Buffer.BuildBytes(), w.Error
 }
 
 // MarshalEasyJSON supports easyjson.Marshaler interface
 func (v InitMessage) MarshalEasyJSON(w *jwriter.Writer) {
-	easyjsonFebee679EncodeGithubComSamyfodilWeb3authJson1(w, v)
+	easyjsonFebee679EncodeGithubComSamyfodilWeb3authProto1(w, v)
 }
 
 // UnmarshalJSON supports json.Unmarshaler interface
 func (v *InitMessage) UnmarshalJSON(data []byte) error {
 	r := jlexer.Lexer{Data: data}
-	easyjsonFebee679DecodeGithubComSamyfodilWeb3authJson1(&r, v)
+	easyjsonFebee679DecodeGithubComSamyfodilWeb3authProto1(&r, v)
 	return r.Error()
 }
 
 // UnmarshalEasyJSON supports easyjson.Unmarshaler interface
 func (v *InitMessage) UnmarshalEasyJSON(l *jlexer.Lexer) {
-	easyjsonFebee679DecodeGithubComSamyfodilWeb3authJson1(l, v)
+	easyjsonFebee679DecodeGithubComSamyfodilWeb3authProto1(l, v)
 }
