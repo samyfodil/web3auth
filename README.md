@@ -10,13 +10,16 @@ This package makes implementing a Web3 Wallets Login possible in few lines of co
 ## Usage 
 The protocol requires two endpoints to issue a token. The first call provides the client with a verifiable random challenge. While the second call verifies the challenge signature then issues a token that can then be used either on or off-chain.
 
-### Import
+## Import
 ``` go
 import (
     "github.com/samyfodil/web3auth"
     "github.com/samyfodil/web3auth/key"
 )
 ```
+
+
+## Issue tokens
 
 ### Initialize your issuer
 ```go
@@ -111,6 +114,26 @@ func authWallet(e event.Event) uint32 {
 	h.Write(resData)
 	return 0
 }
+```
+
+## Verify tokens
+### Initialize your verifier
+```go
+var (
+	verifier web3auth.Verifier
+)
+
+func init() {
+	pk, _ := key.New("HEX-OF-PUBLIC-KEY")
+	verifier = web3auth.New().Verifier(pk)
+}
+```
+
+
+### Verify a token
+
+```go
+err := verifier.Validate("token")
 ```
 
 # Maintainers
