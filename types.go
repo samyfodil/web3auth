@@ -14,6 +14,7 @@ type Instantiator interface {
 
 type Issuer interface {
 	Challenge(message *proto.InitMessage) *proto.InitReply
+	Issue(message *proto.Message) *proto.Response
 }
 type Verifier interface {
 	Validate(token string) error
