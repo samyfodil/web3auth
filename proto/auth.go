@@ -15,8 +15,3 @@ type Response struct {
 	Token string `json:"token"`
 	Error string `json:"error"`
 }
-
-func MarshaledReplyError(err error) []byte {
-	bytes, _ := Response{Error: err.Error()}.MarshalJSON()
-	return bytes
-}

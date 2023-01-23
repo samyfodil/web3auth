@@ -10,7 +10,7 @@ fi
 
 rm -fr *_easyjson.go
 
-for gofile in $(ls *.go | grep -v -e easyjson -e gen.go)
+for gofile in $(ls *.go | grep -v -e easyjson -e gen.go -e _test.go -e helpers.go)
 do
     echo ${gofile}
     easyjson -omit_empty ${gofile}

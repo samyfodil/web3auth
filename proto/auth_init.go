@@ -11,8 +11,3 @@ type InitReply struct {
 	Signature string `json:"signature"`
 	Error     string `json:"error"`
 }
-
-func MarshaledInitReplyError(err error) []byte {
-	bytes, _ := InitReply{Error: err.Error()}.MarshalJSON()
-	return bytes
-}
